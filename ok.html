@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap" rel="stylesheet">
+    <title>CHOPSTCIK'S QUIZ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .main {
+            width: 100%;
+            height: 100vh;
+            background-color: #0093E9;
+            background-image: linear-gradient(160deg, #247fb4 0%, #438f86 100%);
+            font-family: 'Noto Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .quiz {
+            position: absolute;
+            width: 22rem;
+            height: 29rem;
+            border-radius: 10px;
+            background-color: #52a0cd;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        }
+
+
+        .header{
+            width: 100%;
+            height: 40%;
+            background-image: url(start.jpg);
+            background-size: 100% 100%;
+            border-radius: 10px;
+        }
+
+        .question{
+            width: 100%;
+            height: 60%;
+            display: grid;
+        }
+        
+        .quesText{
+          width: 100%;
+          height: 20℅;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        
+        .quesText span{
+          color: white;
+          text-align: center;
+          
+        }
+        
+        .options li {
+          margin: 10px 1rem;
+          line-height: 1rem;
+        }
+        
+        .options li label{
+          color: white;
+          font-weight: 900;
+          font-size: 1.2rem;
+          margin: 0rem 0.5rem;
+        }
+        
+        button{
+          color: #247fb4;
+          border-radius: 0 0 10px 10px;
+          outline: none;
+          border: none;
+          font-weight: 900;
+          font-size: 1.2rem;
+        }
+        
+        #rizzScore{
+          color: yellow;
+        }
+        li{
+          color: white;
+        }
+
+        
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px)
+and (orientation: portrait) {
+    .quiz  {
+	width: 16rem;
+
+}
+}
+
+/* For Mobile Landscape View */
+@media screen and (max-device-width: 640px)
+and (orientation: landscape) {
+   .main{
+     height: 150rem;
+   }
+}
+
+/* For Mobile Phones Portrait or Landscape View */
+@media screen and (max-device-width: 640px) {
+.gfg-div {
+	width: 400px;
+	height: 200px;
+	background-color: chartreuse;
+	color: black;
+}
+}
+
+    </style>
+</head>
+
+<body>
+<section id="media" style="display:none;"></section>
+    <div class="main">
+        <div class="quiz parent">
+            <div class="header child" id="img">
+            </div>
+            <div class="question child">
+              <div class="quesText">
+                <span id="ques">Question bsjdjdkd  d snsjskjssn d d djdjdjd </span>
+              </div>
+
+                <div class="options">
+                    <ul id='optionsikr'>
+                        <li><input type="radio" id="option1r" name="options" onclick="check1()"><label id="option1" for="option1r">Option1</label></li>
+                        <li><input type="radio" id="option2r" name="options" onclick="check2()"><label id="option2" for="option2r">Option2</label></li>
+                        <li><input type="radio" id="option3r" name="options"   onclick="check3()"><label id="option3" for="option3r">Option3</label></li>
+                        <li><input type="radio" id="option4r" name="options" onclick="check4()"><label id="option4" for="option4r">Option4</label>
+                        </li>
+                        </ul>
+                        
+                        <ul>
+                        <li>Rizz Score: <span id="rizzScore">0</span></li>
+                        
+
+                        
+                    </ul>
+                    
+                </div>
+                <button id="btn" onclick="checkfr()">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+const questions=[
+    {
+      "text": "Is Chopstick Emo?",
+      "option1": "Yes",
+      "option2": "No",
+      "option3": "Sometimes",
+      "option4": "Ion know bro",
+      "correct": 3
+    },
+    {
+      "text": "Is Chop Chop Gay?",
+      "option1": "Yes",
+      "option2": "No",
+      "option3": "Sometimes",
+      "option4": "Ion know bro",
+      "correct": 3
+    },
+    {
+      "text": "Is Choppie Sexy?",
+      "option1": "Yes",
+      "option2": "No",
+      "option3": "Sometimes",
+      "option4": "Ion know bro",
+      "correct": 1
+    },
+    {
+      "text": "Is Lipstick angy?",
+      "option1": "Yes",
+      "option2": "No",
+      "option3": "Sometimes",
+      "option4": "Ion know bro", 
+      "correct": 1
+    },
+    {
+      "text": "Is Chopmommy in love with CarlBot?",
+      "option1": "Yes",
+      "option2": "No",
+      "option3": "Sometimes",
+      "option4": "Ion know bro", 
+      "correct": 1
+    },
+    {
+      "text": "Do chopstick suck 'american' ass?",
+      "option1": "Yes",
+      "option2": "No",
+      "option3": "Suck yeah",
+      "option4": "Ion know bro", 
+      "correct": 3
+    },
+    {
+      "text": "Do chopstick like to act weird?",
+      "option1": "Yes",
+      "option2": "No",
+      "option3": "Sometimes",
+      "option4": "Ion know bro", 
+      "correct": 1
+    },
+    {
+      "text": "Which is the most correct name for chopstick?",
+      "option1": "UwU Girl",
+      "option2": "UwU Alabamian Emo Girl",
+      "option3": "UwU Alabamian Girl",
+      "option4": "Ion know bro", 
+      "correct": 2
+    },
+    {
+      "text": "Is UwU chop chop attractive?",
+      "option1": "Ofc bro",
+      "option2": "No,hell nahh that Stick Girl",
+      "option3": "Never",
+      "option4": "Ion know bro", 
+      "correct": 1
+    }
+    ]
+let selected_op;
+let index=0;
+let rizzScore = 0;
+question_update(0);
+  
+    function question_update(index){
+document.getElementById('optionsikr').style.opacity = "10";
+
+document.getElementById("btn").innerText = "SUBMIT";
+    document.getElementById("ques").innerText = questions[index]["text"];
+    for(i=1; i<=4; i++){
+document.getElementById(`option${i}`).innerText = questions[index][`option${i}`];
+    
+    }
+let option1=document.getElementById('option1r');
+let option2=document.getElementById('option2r');
+let option3=document.getElementById('option3r');
+let option4=document.getElementById('option4r');
+option1.checked = false;
+option2.checked = false;
+option3.checked = false;
+option4.checked = false;
+    
+document.getElementById('rizzScore').innerText=rizzScore;
+    }
+    
+    
+    function checkfr()
+    {
+      if(index<((questions.length)-1)){
+if(selected_op==undefined){
+        alert("Select an option, EMO fr!!!")
+      }else{
+        
+        if(selected_op==4){
+          document.getElementById("img").style.backgroundImage = `url(whybro.jpg)`;
+          index++;
+          selected_op=undefined;
+          rizzScore--;
+          question_update(index);
+        }
+        else if(questions[index]["correct"] == selected_op)
+        {
+document.getElementById("img").style.backgroundImage = `url(shawty.jpg)`;
+          index++;
+          selected_op=undefined;
+          rizzScore++;
+          question_update(index);
+        }else{
+          imgs = ["shawty.jpg", "angywangy.png"]
+          let randomIndex = Math.floor(Math.random() *2);
+
+document.getElementById("img").style.backgroundImage = `url(${imgs[randomIndex]})`;
+          index++;
+          selected_op=undefined;
+          rizzScore--;
+          question_update(index);
+        }
+        
+        
+      }
+      
+      
+      }
+      else if(index==((questions.length)-1)){
+if(selected_op==undefined){
+        alert("Select an option, EMO fr!!!")
+      }else{
+        
+        if(selected_op==4){
+          document.getElementById("img").style.backgroundImage = `url(whybro.jpg)`;
+          index++;
+          selected_op=undefined;
+          rizzScore--;
+          last();
+        }
+        else if(questions[index]["correct"] == selected_op)
+        {
+document.getElementById("img").style.backgroundImage = `url(shawty.jpg)`;
+          index++;
+          selected_op=undefined;
+          rizzScore++;
+          last();
+        }else{
+          imgs = ["shawty.jpg", "angywangy.png"]
+          let randomIndex = Math.floor(Math.random() *2);
+
+document.getElementById("img").style.backgroundImage = `url(${imgs[randomIndex]})`;
+          index++;
+          selected_op=undefined;
+          rizzScore--;
+          last();
+        }
+        
+        
+      }
+      
+      
+      }else{
+        reset();
+      }
+      
+    }
+    
+    
+    function check1(){
+      selected_op=1;
+    }
+    function check2(){
+      selected_op=2;
+    }
+    function check3(){
+      selected_op=3;
+    }
+    function check4(){
+      selected_op=4;
+    }
+    
+    
+    function reset(){
+selected_op=undefined;
+        index=0;
+        alert(`Rizz Score: ${rizzScore} xD`)
+        rizzScore=0;
+document.getElementById("img").style.backgroundImage = `url(start.jpg)`;
+question_update(index);
+    }
+    
+    function last(){
+document.getElementById('rizzScore').innerText=rizzScore;
+      document.getElementById('optionsikr').style.opacity = "0";
+document.getElementById("ques").innerText = "Thanks for playing Chopstick's Quiz shawty xD";
+document.getElementById("btn").innerText = "DONE";
+
+index=10;
+
+    }
+    
+    
+var audio = document.createElement('audio');
+var source = document.createElement('source');
+var media = document.getElementById('media');
+media.appendChild(audio);
+audio.appendChild(source);
+source.setAttribute('src', 'bg.mp3');
+source.setAttribute('type', 'audio/mpeg');
+audio.setAttribute('autoplay', "");
+audio.setAttribute('loop', "");
+
+
+    
+</script>
+
+</html>
